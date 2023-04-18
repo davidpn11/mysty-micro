@@ -1,0 +1,23 @@
+{
+  "name": "mysty-micro",
+  "version": "1.0.0",
+  "description": "Microfrontend repo that handles any kind of modern microfrontend solutions",
+  "author": "David Nascimento",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/apps/*",
+    "packages/libs/*"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "eslint-config-custom": "*",
+    "prettier": "^2.8.7",
+    "turbo": "^1.9.3"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
+  "packageManager": "yarn@1.22.19"
+}
