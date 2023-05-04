@@ -9,7 +9,9 @@
     "packages/apps/*",
     "packages/libs/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "start:mf": " turbo run dev --filter=@mysty-micro/container-mf"
+  },
   "devDependencies": {
     "eslint-config-custom": "*",
     "prettier": "^2.8.7",

@@ -1,0 +1,5 @@
+{
+  "extends": "@mysty-micro/tsconfig/react-library.json",
+  "include": ["src", "config"],
+  "exclude": ["dist", "build", "node_modules"]
+}
