@@ -10,7 +10,7 @@
     "packages/libs/*"
   ],
   "scripts": {
-    "start:mf": " turbo run dev --filter=@mysty-micro/container-mf",
+    "start:mf": " turbo run dev --filter=@mysty-micro/container-mf --filter=@mysty-micro/shared-ui",
     "start:dashboard": " turbo run dev --filter=@mysty-micro/dashboard",
     "start:shared": " turbo run dev --filter=@mysty-micro/shared-ui"
   },

@@ -2,35 +2,47 @@
 
 const path = require("path");
 const webpack = require("webpack");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 
-const sharedModule: MFModule = {
+const sharedModule = {
   port: 8001,
-  name: "shared-ui",
+  name: "shared",
 };
 
 const devConfig = {
   mode: "development",
   devtool: "inline-source-map",
-  resolve: {
-    extensions: [".js", ".tsx", ".ts"],
-  },
   devServer: {
     port: sharedModule.port,
-    historyApiFallback: true,
   },
   output: {
     publicPath: `http://localhost:${sharedModule.port}/`,
-    pathinfo: false,
   },
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new ModuleFederationPlugin({
+      name: sharedModule.name,
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Components": "./src/components",
+      },
+      shared: {
+        react: { singleton: true, eager: true, requiredVersion: false },
+        "react-dom": {
+          singleton: true,
+          eager: true,
+          requiredVersion: false,
+        },
+        "styled-components": {
+          singleton: true,
+          eager: true,
+          requiredVersion: false,
+        },
+      },
+    }),
+  ],
 };
 
 module.exports = merge(commonConfig, devConfig);

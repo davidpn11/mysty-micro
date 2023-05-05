@@ -3,10 +3,11 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 
-const containerModule: MFModule = {
+const containerModule = {
   port: 8000,
   name: "container",
 };
@@ -35,6 +36,25 @@ const devConfig = {
     new HtmlWebpackPlugin({
       filename: "./index.html",
       template: "./public/index.html",
+    }),
+    new ModuleFederationPlugin({
+      name: containerModule.name,
+      remotes: {
+        shared: "shared@http://localhost:8001/remoteEntry.js",
+      },
+      shared: {
+        react: { singleton: true, eager: true, requiredVersion: false },
+        "react-dom": {
+          singleton: true,
+          eager: true,
+          requiredVersion: false,
+        },
+        "styled-components": {
+          singleton: true,
+          eager: true,
+          requiredVersion: false,
+        },
+      },
     }),
   ],
 };

@@ -1,7 +1,9 @@
 import { render } from "react-dom";
 import { Header, Wrapper } from "./styles";
 import { createGlobalStyle } from "styled-components";
+import { PageHeader } from "shared/Components";
 
+console.log(PageHeader);
 const GlobalStylesheet = createGlobalStyle`
   * {
     box-sizing: border-box;
