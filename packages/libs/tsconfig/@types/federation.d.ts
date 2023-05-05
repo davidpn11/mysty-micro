@@ -12,3 +12,8 @@ type MountFn = (
   onParentNavigate(location: unknown): void;
   unmount(): void;
 };
+
+type MFModule = {
+  port: number;
+  name: string;
+};

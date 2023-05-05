@@ -5,11 +5,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
-
-const containerModule: MFModule = {
-  port: 8000,
-  name: "container",
-};
+const PORT = 8002;
 
 const devConfig = {
   mode: "development",
@@ -18,11 +14,11 @@ const devConfig = {
     extensions: [".js", ".tsx", ".ts"],
   },
   devServer: {
-    port: containerModule.port,
+    port: PORT,
     historyApiFallback: true,
   },
   output: {
-    publicPath: `http://localhost:${containerModule.port}/`,
+    publicPath: `http://localhost:${PORT}/`,
     pathinfo: false,
   },
   optimization: {

@@ -1,0 +1,29 @@
+{
+  "name": "@mysty-micro/shared-ui",
+  "version": "0.1.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack serve --config config/webpack.dev.js",
+    "lint": "eslint *.ts*"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "styled-components": "^5.3.5"
+  },
+  "@mysty-micro/tsconfig": "*",
+  "devDependencies": {
+    "@mysty-micro/tsconfig": "*",
+    "@types/react": "17.0.9",
+    "@types/styled-components": "5.1.9",
+    "eslint": "^7.32.0",
+    "html-webpack-plugin": "^5.5.1",
+    "ts-loader": "^9.4.2",
+    "typescript-plugin-styled-components": "^2.0.0",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3",
+    "webpack-merge": "^5.8.0"
+  }
+}

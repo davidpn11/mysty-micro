@@ -10,7 +10,9 @@
     "packages/libs/*"
   ],
   "scripts": {
-    "start:mf": " turbo run dev --filter=@mysty-micro/container-mf"
+    "start:mf": " turbo run dev --filter=@mysty-micro/container-mf",
+    "start:dashboard": " turbo run dev --filter=@mysty-micro/dashboard",
+    "start:shared": " turbo run dev --filter=@mysty-micro/shared-ui"
   },
   "devDependencies": {
     "eslint-config-custom": "*",

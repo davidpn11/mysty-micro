@@ -6,9 +6,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 
-const containerModule: MFModule = {
-  port: 8000,
-  name: "container",
+const sharedModule: MFModule = {
+  port: 8001,
+  name: "shared-ui",
 };
 
 const devConfig = {
@@ -18,11 +18,11 @@ const devConfig = {
     extensions: [".js", ".tsx", ".ts"],
   },
   devServer: {
-    port: containerModule.port,
+    port: sharedModule.port,
     historyApiFallback: true,
   },
   output: {
-    publicPath: `http://localhost:${containerModule.port}/`,
+    publicPath: `http://localhost:${sharedModule.port}/`,
     pathinfo: false,
   },
   optimization: {
@@ -30,13 +30,7 @@ const devConfig = {
     removeEmptyChunks: false,
     splitChunks: false,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: "./index.html",
-      template: "./public/index.html",
-    }),
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 };
 
 module.exports = merge(commonConfig, devConfig);
