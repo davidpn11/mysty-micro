@@ -7,7 +7,7 @@ const path = require("path");
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/index.ts",
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
   },
