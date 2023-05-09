@@ -34,6 +34,7 @@ const ItemWrapper = styled.span<{ selected?: boolean }>`
 
 export type Item = {
   name: string;
+  path: string;
   onClick: (name: string) => void;
   selected?: boolean;
 };

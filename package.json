@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "start:mf": " turbo run dev --filter=@mysty-micro/container-mf --filter=@mysty-micro/shared-ui",
+    "start:all": " turbo run dev",
     "start:dashboard": " turbo run dev --filter=@mysty-micro/dashboard",
     "start:shared": " turbo run dev --filter=@mysty-micro/shared-ui"
   },
@@ -23,5 +24,8 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "resolutions": {
+    "history": "4.10.1"
+  }
 }
