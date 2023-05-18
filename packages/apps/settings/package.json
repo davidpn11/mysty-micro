@@ -1,0 +1,35 @@
+{
+  "name": "@mysty-micro/settings",
+  "version": "1.0.0",
+  "description": "Settings app",
+  "main": "src/index.tsx",
+  "scripts": {
+    "dev": "webpack serve --config config/webpack.dev.js",
+    "dev:standalone": "webpack serve --config config/webpack.standalone.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "history": "4.10.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.11.2",
+    "styled-components": "5.3.0"
+  },
+  "devDependencies": {
+    "@mysty-micro/tsconfig": "*",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "@types/react-router-dom": "5.3.3",
+    "@types/styled-components": "5.1.9",
+    "html-webpack-plugin": "^5.5.1",
+    "ts-loader": "^9.4.2",
+    "typescript-plugin-styled-components": "^2.0.0",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3",
+    "webpack-merge": "^5.8.0"
+  }
+}

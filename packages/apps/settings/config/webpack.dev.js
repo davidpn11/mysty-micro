@@ -2,32 +2,49 @@
 
 const path = require("path");
 const webpack = require("webpack");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const sharedModule = {
-  port: 8001,
-  name: "shared",
+const dashboardModule = {
+  port: 8002,
+  name: "dashboard",
 };
 
 const devConfig = {
   mode: "development",
   devtool: "inline-source-map",
+  resolve: {
+    extensions: [".js", ".tsx", ".ts"],
+  },
   devServer: {
-    port: sharedModule.port,
+    port: dashboardModule.port,
+    historyApiFallback: true,
   },
   output: {
-    publicPath: `http://localhost:${sharedModule.port}/`,
+    publicPath: `http://localhost:${dashboardModule.port}/`,
+    pathinfo: false,
+  },
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "./index.html",
+      template: "./public/index.html",
+    }),
     new ModuleFederationPlugin({
-      name: sharedModule.name,
-      library: { type: "system" },
+      name: dashboardModule.name,
       filename: "remoteEntry.js",
+      remotes: {
+        shared: "shared@http://localhost:8001/remoteEntry.js",
+      },
       exposes: {
-        "./Components": "./src/components",
+        "./App": "./src/bootstrap.tsx",
       },
       shared: {
         react: { singleton: true, eager: true, requiredVersion: false },
