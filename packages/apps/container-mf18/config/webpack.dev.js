@@ -3,27 +3,28 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const settingsModule = {
-  port: 8003,
-  name: "settings",
+const containerModule = {
+  port: 8000,
+  name: "container",
 };
 
 const devConfig = {
   mode: "development",
   devtool: "inline-source-map",
+  target: "web",
   resolve: {
     extensions: [".js", ".tsx", ".ts"],
   },
   devServer: {
-    port: settingsModule.port,
+    port: containerModule.port,
     historyApiFallback: true,
   },
   output: {
-    publicPath: `http://localhost:${settingsModule.port}/`,
+    publicPath: `http://localhost:${containerModule.port}/`,
     pathinfo: false,
   },
   optimization: {
@@ -38,13 +39,12 @@ const devConfig = {
       template: "./public/index.html",
     }),
     new ModuleFederationPlugin({
-      name: settingsModule.name,
-      filename: "remoteEntry.js",
+      name: containerModule.name,
+      library: { type: "system" },
       remotes: {
         shared: "shared@http://localhost:8001/remoteEntry.js",
-      },
-      exposes: {
-        "./App": "./src/bootstrap.tsx",
+        dashboard: "dashboard@http://localhost:8002/remoteEntry.js",
+        // remoteVite: "http://localhost:5001/assets/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, eager: true, requiredVersion: false },

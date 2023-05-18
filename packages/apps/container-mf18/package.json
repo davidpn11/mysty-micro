@@ -1,0 +1,34 @@
+{
+  "name": "@mysty-micro/container-mf18",
+  "version": "1.0.0",
+  "description": "Main container app with React 18 for the Module Federation approach",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --config config/webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "history": "4.10.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "5.2.0",
+    "styled-components": "5.3.0"
+  },
+  "devDependencies": {
+    "@mysty-micro/tsconfig": "*",
+    "@types/react": "17.0.9",
+    "@types/react-dom": "17.0.6",
+    "@types/react-router-dom": "5.1.7",
+    "@types/styled-components": "5.1.9",
+    "html-webpack-plugin": "^5.5.1",
+    "ts-loader": "^9.4.2",
+    "typescript-plugin-styled-components": "^2.0.0",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3",
+    "webpack-merge": "^5.8.0"
+  }
+}
