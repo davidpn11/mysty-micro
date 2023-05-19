@@ -20,8 +20,3 @@ declare module "*/App" {
 declare module "shared/Components" {
   export * from "@mysty-micro/shared-ui/src/components";
 }
-
-declare module "remoteVite/Button" {
-  type Button = HTMLButtonElement;
-  export { Button };
-}
