@@ -24,7 +24,6 @@ const devConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: sharedModule.name,
-      library: { type: "system" },
       filename: "remoteEntry.js",
       exposes: {
         "./Components": "./src/components",

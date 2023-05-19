@@ -40,7 +40,6 @@ const devConfig = {
     }),
     new ModuleFederationPlugin({
       name: containerModule.name,
-      library: { type: "system" },
       remotes: {
         shared: "shared@http://localhost:8001/remoteEntry.js",
         dashboard: "dashboard@http://localhost:8002/remoteEntry.js",
