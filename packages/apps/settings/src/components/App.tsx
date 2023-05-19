@@ -1,3 +1,3 @@
 export function App() {
-  return <div>Settings app here!</div>;
+  return <div>Federated Settings app here!</div>;
 }

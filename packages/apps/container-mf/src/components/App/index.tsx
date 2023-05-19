@@ -57,6 +57,7 @@ export function App() {
   const onItemClick = (itemName: string) => () => {
     onSelectRoute(itemName);
     const currItem = items.find((item) => item.name === itemName);
+    console.log({ itemName, currItem });
 
     currItem && history.push(currItem.path);
   };
@@ -71,6 +72,7 @@ export function App() {
   }, [selectedRoute]);
 
   const history = createBrowserHistory();
+  console.log(history);
 
   return (
     <Wrapper>

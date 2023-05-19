@@ -43,7 +43,7 @@ const devConfig = {
       remotes: {
         shared: "shared@http://localhost:8001/remoteEntry.js",
         dashboard: "dashboard@http://localhost:8002/remoteEntry.js",
-        // settings: "settings@http://localhost:8003/remoteEntry.js",
+        settings: "settings@http://localhost:8003/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, eager: true, requiredVersion: false },
