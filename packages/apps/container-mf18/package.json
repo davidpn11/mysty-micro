@@ -1,7 +1,7 @@
 {
   "name": "@mysty-micro/container-mf18",
   "version": "1.0.0",
-  "description": "Main container app with React 18 for the Module Federation approach",
+  "description": "Main container app for the Module Federation approach",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config config/webpack.dev.js",

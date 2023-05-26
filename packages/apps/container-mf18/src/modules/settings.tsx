@@ -1,3 +1,7 @@
+import { mount } from "settings/App";
+import { useMount } from "../hooks/useMount";
+
 export default function Settings() {
-  return <div>This is the settings page</div>;
+  const ref = useMount(mount);
+  return <div id="settings-root" ref={ref} />;
 }

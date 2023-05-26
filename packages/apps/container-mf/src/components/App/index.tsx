@@ -75,7 +75,7 @@ export function App() {
   return (
     <Wrapper>
       <GlobalStylesheet />
-      <PageHeader>
+      <PageHeader variant="primary">
         <h3>Container MF app!</h3>
       </PageHeader>
 
