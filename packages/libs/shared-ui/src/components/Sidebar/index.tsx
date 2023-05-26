@@ -35,7 +35,7 @@ const ItemWrapper = styled.span<{ selected?: boolean }>`
 export type Item = {
   name: string;
   path: string;
-  onClick: (name: string) => void;
+  onClick?: () => void;
   selected?: boolean;
 };
 
@@ -57,11 +57,8 @@ type SideBarItemProps = {
 };
 
 export function SidebarItem({ item }: SideBarItemProps) {
-  const onClick = () => {
-    item.onClick(item.name);
-  };
   return (
-    <ItemWrapper selected={item.selected} onClick={onClick}>
+    <ItemWrapper selected={item.selected} onClick={item.onClick}>
       {item.name}
     </ItemWrapper>
   );

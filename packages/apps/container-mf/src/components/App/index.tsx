@@ -1,11 +1,12 @@
 import { Wrapper } from "../../styles";
 import styled, { createGlobalStyle } from "styled-components";
-import { Item, PageHeader, Sidebar } from "shared/Components";
+import { Item, PageHeader } from "shared/Components";
 import { Suspense, lazy, useMemo, useState } from "react";
-import { Route, Router, Switch } from "react-router-dom";
+import { Route, Router, Switch, useLocation } from "react-router-dom";
 
 //@ts-ignore
 import { createBrowserHistory } from "history";
+import { AppSidebar } from "../AppSidebar";
 
 const Dashboard = lazy(() => import("../../modules/dashboard"));
 // const Dashboard = lazy(() => import("../../modules/dashboard"));
@@ -53,11 +54,9 @@ const itemList = [
 
 export function App() {
   const [selectedRoute, onSelectRoute] = useState("Home");
-
   const onItemClick = (itemName: string) => () => {
-    onSelectRoute(itemName);
+    // onSelectRoute(itemName);
     const currItem = items.find((item) => item.name === itemName);
-    console.log({ itemName, currItem });
 
     currItem && history.push(currItem.path);
   };
@@ -72,7 +71,6 @@ export function App() {
   }, [selectedRoute]);
 
   const history = createBrowserHistory();
-  console.log(history);
 
   return (
     <Wrapper>
@@ -81,11 +79,11 @@ export function App() {
         <h3>Container MF app!</h3>
       </PageHeader>
 
-      <PageWrapper>
-        <Sidebar items={items} />
-        <Container>
-          <Suspense fallback={<div> Loading....</div>}>
-            <Router history={history}>
+      <Router history={history}>
+        <PageWrapper>
+          <AppSidebar />
+          <Container>
+            <Suspense fallback={<div> Loading....</div>}>
               <Switch>
                 <Route path={"/dashboard"}>
                   <Dashboard />
@@ -97,10 +95,10 @@ export function App() {
                   <div>This is the home page</div>
                 </Route>
               </Switch>
-            </Router>
-          </Suspense>
-        </Container>
-      </PageWrapper>
+            </Suspense>
+          </Container>
+        </PageWrapper>
+      </Router>
     </Wrapper>
   );
 }
