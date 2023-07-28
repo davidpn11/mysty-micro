@@ -1,9 +1,10 @@
-import * as React from 'react';
-import styled, { css } from 'styled-components';
+import * as React from "react";
+import styled, { css } from "styled-components";
 
 type ButtonProps = {
   error?: boolean;
   disabled?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 const ButtonWrapper = styled.button<ButtonProps>`
@@ -11,7 +12,7 @@ const ButtonWrapper = styled.button<ButtonProps>`
   outline: none;
   background: transparent;
   border: ${(props) =>
-    props.error ? '2px solid firebrick' : ' 1px solid grey'};
+    props.error ? "2px solid firebrick" : " 1px solid grey"};
   ${(props) =>
     props.error &&
     css`

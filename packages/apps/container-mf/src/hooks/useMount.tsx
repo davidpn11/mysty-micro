@@ -6,12 +6,17 @@ export function useMount(mount: MountFn) {
   const history = useHistory();
 
   useEffect(() => {
-    const { unmount } = mount(ref.current, {
+    const { unmount, onParentNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
-      onNavigate() {},
+      onNavigate({ pathname: nextPathname }) {
+        if (history.location.pathname !== nextPathname) {
+          history.push(nextPathname);
+        }
+      },
     });
 
-    // history.listen(onParentNavigate);
+    // console.log({ history, onParentNavigate });
+    onParentNavigate && history.listen(onParentNavigate);
 
     return () => {
       ref.current = null;

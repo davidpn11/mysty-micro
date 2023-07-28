@@ -37,6 +37,7 @@ export type Item = {
   path: string;
   onClick?: () => void;
   selected?: boolean;
+  exactPath?: boolean;
 };
 
 type SidebarProps = {
