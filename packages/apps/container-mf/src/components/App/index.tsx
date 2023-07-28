@@ -9,7 +9,6 @@ import { createBrowserHistory } from "history";
 import { AppSidebar } from "../AppSidebar";
 
 const Dashboard = lazy(() => import("../../modules/dashboard"));
-// const Dashboard = lazy(() => import("../../modules/dashboard"));
 const Settings = lazy(() => import("../../modules/settings"));
 
 const GlobalStylesheet = createGlobalStyle`
@@ -46,30 +45,7 @@ const Container = styled.div`
   display: flex;
 `;
 
-const itemList = [
-  { name: "Home", path: "/" },
-  { name: "Dashboard", path: "/dashboard" },
-  { name: "Settings", path: "/settings" },
-];
-
 export function App() {
-  const [selectedRoute, onSelectRoute] = useState("Home");
-  const onItemClick = (itemName: string) => () => {
-    // onSelectRoute(itemName);
-    const currItem = items.find((item) => item.name === itemName);
-
-    currItem && history.push(currItem.path);
-  };
-
-  const items: Item[] = useMemo(() => {
-    return itemList.map((item) => ({
-      name: item.name,
-      path: item.path,
-      onClick: onItemClick(item.name),
-      selected: item.name === selectedRoute,
-    }));
-  }, [selectedRoute]);
-
   const history = createBrowserHistory();
 
   return (

@@ -2,7 +2,7 @@ import { Wrapper } from "../../styles";
 import styled, { createGlobalStyle } from "styled-components";
 import { Item, PageHeader } from "shared/Components";
 import { Suspense, lazy, useMemo, useState } from "react";
-import { Route, Router, Switch, useLocation } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 //@ts-ignore
 import { createBrowserHistory } from "history";
@@ -79,26 +79,23 @@ export function App() {
         <h3>Container MF app - React 18</h3>
       </PageHeader>
 
-      <Router history={history}>
+      <BrowserRouter>
         <PageWrapper>
           <AppSidebar />
           <Container>
             <Suspense fallback={<div> Loading....</div>}>
-              <Switch>
-                <Route path={"/dashboard"}>
-                  <Dashboard />
-                </Route>
-                <Route path={"/settings"}>
-                  <Settings />
-                </Route>
-                <Route path="/">
-                  <div>This is the home page</div>
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path={"/dashboard"} element={<Dashboard />}></Route>
+                <Route path={"/settings"} element={<Settings />}></Route>
+                <Route
+                  path="/"
+                  element={<div>This is the home page</div>}
+                ></Route>
+              </Routes>
             </Suspense>
           </Container>
         </PageWrapper>
-      </Router>
+      </BrowserRouter>
     </Wrapper>
   );
 }

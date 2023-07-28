@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Item, Sidebar } from "shared/Components";
 
 const itemList = [
@@ -9,11 +9,11 @@ const itemList = [
 ];
 
 export function AppSidebar() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const onClick = (path: string) => () => {
-    history.push(path);
+    navigate(path);
   };
 
   const items: Item[] = useMemo(() => {
