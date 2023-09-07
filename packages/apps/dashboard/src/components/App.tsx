@@ -1,4 +1,4 @@
-import { createBrowserHistory } from "history";
+import { MemoryHistory, createBrowserHistory } from "history";
 import { Router, Switch, useHistory, Route } from "react-router-dom";
 import { Button } from "shared/Components";
 import { Details } from "./Details";
@@ -22,11 +22,9 @@ function Home() {
   );
 }
 
-export function App() {
-  const history = createBrowserHistory();
-
+export function App(props: { history: MemoryHistory }) {
   return (
-    <Router history={history}>
+    <Router history={props.history}>
       <Switch>
         <Route path={"/dashboard/details"}>
           <Details />

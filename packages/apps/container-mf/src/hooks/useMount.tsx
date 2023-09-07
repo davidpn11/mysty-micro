@@ -9,13 +9,13 @@ export function useMount(mount: MountFn) {
     const { unmount, onParentNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
       onNavigate({ pathname: nextPathname }) {
+        console.log({ onNavigate: nextPathname });
         if (history.location.pathname !== nextPathname) {
           history.push(nextPathname);
         }
       },
     });
 
-    // console.log({ history, onParentNavigate });
     onParentNavigate && history.listen(onParentNavigate);
 
     return () => {
