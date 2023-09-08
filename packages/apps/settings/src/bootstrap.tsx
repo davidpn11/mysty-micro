@@ -1,5 +1,10 @@
 import ReactDOM from "react-dom/client";
-import { App } from "./components/App";
+import { Advanced, SettingsHome } from "./components/App";
+import {
+  RouterProvider,
+  createMemoryRouter,
+  createBrowserRouter,
+} from "react-router-dom";
 
 export const mount: MountFn = (el, params) => {
   if (!el) {
@@ -8,12 +13,50 @@ export const mount: MountFn = (el, params) => {
       unmount() {},
     };
   }
+  console.log({ initial: params.initialPath });
 
+  const localRoutes = [
+    { path: "/", element: <SettingsHome /> },
+    { path: "/advanced", element: <Advanced /> },
+  ];
+
+  const router = createBrowserRouter([...localRoutes], {
+    basename: params.initialPath,
+  });
   const root = ReactDOM.createRoot(el);
-  root.render(<App />);
+
+  // router.subscribe((location: any) => {
+  //   console.log({
+  //     newRouter: location,
+  //     loc: location.location.pathname,
+  //     initialPath: params.initialPath,
+  //   });
+  // params.onNavigate &&
+  //   params.onNavigate({
+  //     pathname: location.location.pathname,
+  //   });
+  // });
+
+  root.render(
+    <RouterProvider router={router} />
+    // <App
+    //   initialPath={params.initialPath}
+    //   onNavigate={params.onNavigate}
+    //   router={router}
+    // />
+  );
 
   return {
-    onParentNavigate() {},
+    onParentNavigate({ pathname: nextPathname }) {
+      // Has to find a way to make that work without checking the location
+      const routerPath = router.state.location.pathname;
+      console.log({ parent: nextPathname, router: routerPath });
+      //   console.log({ onParentNavigate: nextPathname });
+      if (routerPath !== nextPathname) {
+        // router.navigate(routerPath);
+        console.log("SHOULD NAVIGATE TO", router.state.location.pathname);
+      }
+    },
     unmount() {
       if (el) {
         root.unmount();

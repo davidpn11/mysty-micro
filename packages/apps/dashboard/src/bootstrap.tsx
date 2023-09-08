@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { App } from "./components/App";
-import { MemoryHistory, createMemoryHistory } from "history";
+import { createMemoryHistory } from "history";
 
 export const mount: MountFn = (el, params) => {
   const history = createMemoryHistory({
@@ -13,7 +13,7 @@ export const mount: MountFn = (el, params) => {
   return {
     onParentNavigate({ pathname: nextPathname }) {
       if (history.location.pathname !== nextPathname) {
-        console.log({ onParentNavigate: nextPathname });
+        console.log({ onParentNavigateDashboard: nextPathname });
         history.push(nextPathname);
       }
     },
