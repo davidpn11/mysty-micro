@@ -18,7 +18,7 @@ export function AppSidebar() {
 
   const items: Item[] = useMemo(() => {
     return itemList.map((item) => {
-      console.log({ itemPath: item.path, location: location.pathname });
+      // console.log({ itemPath: item.path, location: location.pathname });
 
       return {
         name: item.name,

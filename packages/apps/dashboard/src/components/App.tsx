@@ -26,10 +26,10 @@ export function App(props: { history: MemoryHistory }) {
   return (
     <Router history={props.history}>
       <Switch>
-        <Route path={"/dashboard/details"}>
+        <Route exact path={"/dashboard/details"}>
           <Details />
         </Route>
-        <Route path={"/dashboard/archive"}>
+        <Route exact path={"/dashboard/archive"}>
           <Archive />
         </Route>
         <Route exact path={"/dashboard"}>

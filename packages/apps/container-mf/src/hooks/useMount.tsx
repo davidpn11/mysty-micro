@@ -9,18 +9,27 @@ export function useMount(mount: MountFn) {
     const { unmount, onParentNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
       onNavigate({ pathname: nextPathname }) {
-        console.log({
+        console.log("CONTAINER17-onNavigate", {
           container17NextPath: nextPathname,
           container17Location: history.location.pathname,
         });
         if (history.location.pathname !== nextPathname) {
-          console.log("pushing history - ", nextPathname);
+          console.log(
+            "CONTAINER17-onNavigate - pushing history - ",
+            nextPathname
+          );
           history.push(nextPathname);
         }
       },
     });
-
-    onParentNavigate && history.listen(onParentNavigate);
+    const listener = (location: unknown) => {
+      console.log(
+        "CONTAINER17-onNavigate - onParentNavigateListener",
+        location
+      );
+      onParentNavigate && onParentNavigate(location);
+    };
+    history.listen(listener);
 
     return () => {
       ref.current = null;

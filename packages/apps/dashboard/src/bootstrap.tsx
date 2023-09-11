@@ -7,13 +7,18 @@ export const mount: MountFn = (el, params) => {
     initialEntries: [params.initialPath],
   });
 
-  history.listen(params.onNavigate);
+  const listener = (location: unknown) => {
+    console.log("Mount Dashboard - onNavigate", location);
+    params.onNavigate(location);
+  };
+
+  history.listen(listener);
   ReactDOM.render(<App history={history} />, el);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
       if (history.location.pathname !== nextPathname) {
-        console.log({ onParentNavigateDashboard: nextPathname });
+        console.log({ "Mount Dashboar - onParentnavigate": nextPathname });
         history.push(nextPathname);
       }
     },
