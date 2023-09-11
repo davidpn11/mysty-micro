@@ -10,12 +10,12 @@ export function useMount(mount: MountFn) {
       initialPath: history.location.pathname,
       onNavigate({ pathname: nextPathname }) {
         console.log({
-          container: nextPathname,
-          containerLocation: history.location.pathname,
+          container17NextPath: nextPathname,
+          container17Location: history.location.pathname,
         });
         if (history.location.pathname !== nextPathname) {
+          console.log("pushing history - ", nextPathname);
           history.push(nextPathname);
-          console.log("container history");
         }
       },
     });

@@ -85,8 +85,8 @@ export function App() {
           <Container>
             <Suspense fallback={<div> Loading....</div>}>
               <Routes>
-                <Route path={"/dashboard"} element={<Dashboard />}></Route>
-                <Route path={"/settings"} element={<Settings />}></Route>
+                <Route path={"/dashboard/*"} element={<Dashboard />}></Route>
+                <Route path={"/settings/*"} element={<Settings />}></Route>
                 <Route
                   path="/"
                   element={<div>This is the home page</div>}

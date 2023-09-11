@@ -50,11 +50,17 @@ export const mount: MountFn = (el, params) => {
     onParentNavigate({ pathname: nextPathname }) {
       // Has to find a way to make that work without checking the location
       const routerPath = router.state.location.pathname;
-      console.log({ parent: nextPathname, router: routerPath });
+      console.log("onParentNavigate - Settings", {
+        parent: nextPathname,
+        router: routerPath,
+      });
       //   console.log({ onParentNavigate: nextPathname });
       if (routerPath !== nextPathname) {
         // router.navigate(routerPath);
-        console.log("SHOULD NAVIGATE TO", router.state.location.pathname);
+        console.log(
+          "Settings - SHOULD NAVIGATE TO",
+          router.state.location.pathname
+        );
       }
     },
     unmount() {

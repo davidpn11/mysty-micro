@@ -17,12 +17,19 @@ export function AppSidebar() {
   };
 
   const items: Item[] = useMemo(() => {
-    return itemList.map((item) => ({
-      name: item.name,
-      path: item.path,
-      onClick: onClick(item.path),
-      selected: item.path === location.pathname,
-    }));
+    return itemList.map((item) => {
+      console.log({ itemPath: item.path, location: location.pathname });
+
+      return {
+        name: item.name,
+        path: item.path,
+        onClick: onClick(item.path),
+        selected:
+          item.path === "/"
+            ? item.path === location.pathname
+            : location.pathname.includes(item.path),
+      };
+    });
   }, [location.pathname]);
 
   return <Sidebar items={items} />;
