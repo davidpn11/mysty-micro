@@ -1,6 +1,6 @@
-import ReactDOM from "react-dom";
-import { App } from "./components/App";
-import { createMemoryHistory } from "history";
+import { createMemoryHistory } from 'history';
+import ReactDOM from 'react-dom';
+import { App } from './components/App';
 
 export const mount: MountFn = (el, params) => {
   const history = createMemoryHistory({
@@ -8,7 +8,7 @@ export const mount: MountFn = (el, params) => {
   });
 
   const listener = (location: unknown) => {
-    console.log("Mount Dashboard - onNavigate", location);
+    console.log('Mount Dashboard - onNavigate', location);
     params.onNavigate(location);
   };
 
@@ -18,7 +18,7 @@ export const mount: MountFn = (el, params) => {
   return {
     onParentNavigate({ pathname: nextPathname }) {
       if (history.location.pathname !== nextPathname) {
-        console.log({ "Mount Dashboar - onParentnavigate": nextPathname });
+        console.log({ 'Mount Dashboard - onParentNavigate': nextPathname });
         history.push(nextPathname);
       }
     },
