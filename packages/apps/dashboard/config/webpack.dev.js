@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { MFLiveReloadPlugin } = require("@module-federation/fmr");
 
 const dashboardModule = {
   port: 8002,
@@ -32,7 +33,10 @@ const devConfig = {
     splitChunks: false,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new MFLiveReloadPlugin({
+      container: dashboardModule.name,
+      port: dashboardModule.port,
+    }),
     new HtmlWebpackPlugin({
       filename: "./index.html",
       template: "./public/index.html",

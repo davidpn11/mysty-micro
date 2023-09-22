@@ -24,7 +24,7 @@ export function SettingsHome() {
 
   return (
     <div>
-      <div>Federated Settings app here! (React 18)</div>
+      <div>Federated Settings app here! (React 18) -- RELOAD</div>
       <span>
         <Button onClick={() => navigate("/advanced")}>Advanced</Button>
       </span>

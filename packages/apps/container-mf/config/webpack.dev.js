@@ -33,10 +33,13 @@ const devConfig = {
     splitChunks: false,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: "./index.html",
       template: "./public/index.html",
+    }),
+    new MFLiveReloadPlugin({
+      container: containerModule.name,
+      port: containerModule.port,
     }),
     new ModuleFederationPlugin({
       name: containerModule.name,
