@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
+const { MFLiveReloadPlugin } = require("@module-federation/fmr");
 
 const containerModule = {
   port: 8000,
@@ -38,8 +39,8 @@ const devConfig = {
       template: "./public/index.html",
     }),
     new MFLiveReloadPlugin({
-      container: settingsModule.name,
-      port: settingsModule.port,
+      container: containerModule.name,
+      port: containerModule.port,
     }),
     new ModuleFederationPlugin({
       name: containerModule.name,
