@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@mysty-micro/tsconfig": "*",
+    "@mysty-micro/build-tools": "*",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "@types/react-router-dom": "5.3.3",

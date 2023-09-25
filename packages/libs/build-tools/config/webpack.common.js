@@ -1,10 +1,11 @@
 const {
   default: createStyledComponentsTransformer,
 } = require("typescript-plugin-styled-components");
+const path = require("path");
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
-export const getCommonConfig = (port) => {
+function getCommonConfig(port) {
   return {
     output: {
       publicPath: "http://localhost:" + port + "/",
@@ -57,4 +58,6 @@ export const getCommonConfig = (port) => {
       ],
     },
   };
-};
+}
+
+module.exports = { getCommonConfig };

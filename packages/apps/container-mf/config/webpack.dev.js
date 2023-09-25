@@ -5,7 +5,6 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const { getCommonConfig } = require("@mysty-micro/build-tools");
-// const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const { MFLiveReloadPlugin } = require("@module-federation/fmr");
 
@@ -48,7 +47,7 @@ const devConfig = {
       name: containerModule.name,
       remotes: {
         shared: "shared@http://localhost:8001/remoteEntry.js",
-        dashboard: "dashboard@http://localhost:8002/remoteEntry.js",``
+        dashboard: "dashboard@http://localhost:8002/remoteEntry.js",
         settings: "settings@http://localhost:8003/remoteEntry.js",
       },
       shared: {

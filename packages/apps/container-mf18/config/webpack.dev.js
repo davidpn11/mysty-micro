@@ -4,9 +4,11 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const commonConfig = require("./webpack.common");
+const { getCommonConfig } = require("@mysty-micro/build-tools");
 const { merge } = require("webpack-merge");
 const { MFLiveReloadPlugin } = require("@module-federation/fmr");
+
+const commonConfig = getCommonConfig(8000);
 
 const containerModule = {
   port: 8000,
