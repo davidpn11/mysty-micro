@@ -1,9 +1,9 @@
 import { Wrapper } from "../../styles";
 import styled, { createGlobalStyle } from "styled-components";
 import { Item, PageHeader } from "shared/Components";
-import { Suspense, lazy, useMemo, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { Route, Router, Switch, useLocation } from "react-router-dom";
-
+import { config } from "@app-config/main";
 //@ts-ignore
 import { createBrowserHistory } from "history";
 import { AppSidebar } from "../AppSidebar";
@@ -68,7 +68,10 @@ export function App() {
                   <Settings />
                 </Route>
                 <Route path="/">
-                  <div>This is the home page</div>
+                  <div>
+                    This is the home page - Env:{" "}
+                    {config.core.constants.env_name}
+                  </div>
                 </Route>
               </Switch>
             </Suspense>

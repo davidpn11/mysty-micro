@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+
+required:
+  - core
+
+properties:
+  core:
+    type: object
+    additionalProperties: false
+    required: [constants]
+    properties:
+      constants:
+        type: object
+        additionalProperties: false
+        required: [env_name, aws_key]
+        properties:
+          env_name: { type: string }
+          aws_key: { type: number }

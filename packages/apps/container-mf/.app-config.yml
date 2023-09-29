@@ -1,0 +1,8 @@
+core:
+  $env:
+    default:
+      $extends: "./app-config/.app-config.dev.yml"
+    dev:
+      $extends: "./app-config/.app-config.dev.yml"
+    staging:
+      $extends: "./app-config/.app-config.staging.yml"

@@ -1,0 +1,3 @@
+constants:
+  env_name: "mywebside.dev.com"
+  aws_key: 123456

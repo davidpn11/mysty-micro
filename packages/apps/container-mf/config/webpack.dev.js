@@ -7,6 +7,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { getCommonConfig } = require("@mysty-micro/build-tools");
 const { merge } = require("webpack-merge");
 const { MFLiveReloadPlugin } = require("@module-federation/fmr");
+const { default: AppConfigPlugin } = require("@app-config/webpack");
 
 const commonConfig = getCommonConfig(8000);
 const containerModule = {
@@ -34,7 +35,18 @@ const devConfig = {
     removeEmptyChunks: false,
     splitChunks: false,
   },
+  module: {
+    rules: [
+      {
+        test: AppConfigPlugin.regex,
+        use: {
+          loader: AppConfigPlugin.loader,
+        },
+      },
+    ],
+  },
   plugins: [
+    new AppConfigPlugin(),
     new HtmlWebpackPlugin({
       filename: "./index.html",
       template: "./public/index.html",
