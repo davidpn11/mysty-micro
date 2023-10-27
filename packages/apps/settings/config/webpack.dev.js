@@ -22,6 +22,9 @@ const devConfig = {
   devServer: {
     port: settingsModule.port,
     historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
     publicPath: `http://localhost:${settingsModule.port}/`,

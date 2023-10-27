@@ -39,6 +39,9 @@ const devConfig = {
   devtool: "inline-source-map",
   devServer: {
     port: sharedModule.port,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
     publicPath: `http://localhost:${sharedModule.port}/`,

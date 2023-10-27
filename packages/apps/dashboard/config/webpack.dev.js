@@ -22,6 +22,9 @@ const devConfig = {
   devServer: {
     port: dashboardModule.port,
     historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
     publicPath: `http://localhost:${dashboardModule.port}/`,

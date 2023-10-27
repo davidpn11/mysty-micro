@@ -21,7 +21,6 @@ function getCommonConfig(port) {
         "Access-Control-Allow-Origin": "*",
       },
     },
-
     module: {
       rules: [
         {

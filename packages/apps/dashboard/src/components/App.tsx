@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <div>
-      <div>Dashboard app! (React 17) - RELOAD</div>
+      <div>Dashboard app! (React 17)</div>
       <span>
         <Button onClick={() => history.push("/dashboard/details")}>
           Go to details
