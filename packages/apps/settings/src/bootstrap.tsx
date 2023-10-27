@@ -5,6 +5,7 @@ import {
   createMemoryRouter,
   createBrowserRouter,
 } from "react-router-dom";
+import { Standalone } from "shared/Components";
 
 export const mount: MountFn = (el, params) => {
   if (!el) {
@@ -37,14 +38,15 @@ export const mount: MountFn = (el, params) => {
   //   });
   // });
 
-  root.render(
+  const App = params.isStandAlone ? (
+    <Standalone>
+      <RouterProvider router={router} />
+    </Standalone>
+  ) : (
     <RouterProvider router={router} />
-    // <App
-    //   initialPath={params.initialPath}
-    //   onNavigate={params.onNavigate}
-    //   router={router}
-    // />
   );
+
+  root.render(App);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
