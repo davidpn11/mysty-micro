@@ -1,7 +1,6 @@
 type MountParams = {
   initialPath: string;
   onNavigate(location: unknown): void;
-  isStandAlone?: boolean;
 };
 
 type MountFn = (

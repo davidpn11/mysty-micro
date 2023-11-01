@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve --config config/webpack.dev.js",
+    "dev-standalone": "yarn dev",
     "lint": "eslint *.ts*"
   },
   "dependencies": {

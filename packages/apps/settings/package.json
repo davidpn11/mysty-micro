@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "dev": "webpack serve --config config/webpack.dev.js",
-    "dev:standalone": "webpack serve --config config/webpack.standalone.js",
+    "dev-standalone": "webpack serve --config config/webpack.dev.js --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

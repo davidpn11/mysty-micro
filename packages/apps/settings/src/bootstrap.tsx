@@ -5,7 +5,6 @@ import {
   createMemoryRouter,
   createBrowserRouter,
 } from "react-router-dom";
-import { Standalone } from "shared/Components";
 
 export const mount: MountFn = (el, params) => {
   if (!el) {
@@ -26,27 +25,7 @@ export const mount: MountFn = (el, params) => {
   });
   const root = ReactDOM.createRoot(el);
 
-  // router.subscribe((location: any) => {
-  //   console.log({
-  //     newRouter: location,
-  //     loc: location.location.pathname,
-  //     initialPath: params.initialPath,
-  //   });
-  // params.onNavigate &&
-  //   params.onNavigate({
-  //     pathname: location.location.pathname,
-  //   });
-  // });
-
-  const App = params.isStandAlone ? (
-    <Standalone>
-      <RouterProvider router={router} />
-    </Standalone>
-  ) : (
-    <RouterProvider router={router} />
-  );
-
-  root.render(App);
+  root.render(<RouterProvider router={router} />);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
